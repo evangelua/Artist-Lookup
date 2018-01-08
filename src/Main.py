@@ -14,9 +14,9 @@ except:
 all_soup = BeautifulSoup(song_request.text, 'html.parser')
 all_lyrics = all_soup.find_all(class_="Highlight")
 
-for i in all_lyrics:
-    if not re.search(r'\.\.\/\.\.|#|album', str(i)):
-        song_url = 'https://www.lyricsondemand.com/' + name[0] + '/' + name + 'lyrics/' + i.a['href']
+for tag in all_lyrics:
+    if not re.search(r'\.\.\/\.\.|#|album', str(tag)):
+        song_url = 'https://www.lyricsondemand.com/' + name[0] + '/' + name + 'lyrics/' + tag.a['href']
 
         try:
             song_request = requests.get(song_url)
